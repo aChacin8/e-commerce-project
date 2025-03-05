@@ -7,9 +7,9 @@ const ProductListComponent = () => {
 
     console.log(list);
 
-    // const filteredProducts = list.filter((product) => {
-    //     return product.product_name.toLowerCase().includes(search.toLowerCase());
-    // });
+    const filteredProducts = list.filter((product) => {
+        return product.product_name.toLowerCase().includes(search.toLowerCase());
+    });
 
     return (
         <>

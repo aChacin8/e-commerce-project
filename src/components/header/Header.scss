@@ -1,0 +1,42 @@
+$menu-color: #255;
+
+@mixin header-link {
+    color: $menu-color;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+@mixin header-border ($size:2px){
+    border-bottom: solid $size $menu-color;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+
+    &__logo {
+        @include header-link();
+    }
+
+    &__nav-list{
+        display: flex;
+        list-style: none;
+        column-gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    &__item-link{
+        @include header-link();
+
+        &:hover {
+            @include header-border();
+        }
+    }
+        &--is-active{
+            @include header-border($size:3px);
+        }
+    
+
+}
