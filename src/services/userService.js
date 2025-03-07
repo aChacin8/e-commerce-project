@@ -8,4 +8,4 @@ const registerUserService = async (data) => axios.post (`${URL}/register`, data)
 //login
 const loginUserService = async (data) => axios.post (`${URL}/login`, data)  // https://json-sever-jwt.onrender.com/login {json}
 
-export {registerUserService, loginUserService};
+export default  {registerUserService, loginUserService};
