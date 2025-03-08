@@ -2,12 +2,15 @@ import {useForm} from 'react-hook-form';;
 import { Card, Button, Form } from 'react-bootstrap';
 import { NavLink, useNavigate } from 'react-router-dom';
 import userService from '@/services/userService';
+import { useAuthContext } from '@/hooks/useAuthContext';
 
 const {loginUserService} = userService; 
 
 const Login = () => {
     const {register, handleSubmit, formState: {errors}} = useForm();
     const navigate = useNavigate(); //Redirigir a otra ruta.
+    const {login} = useAuthContext(); //Consumir el contexto de autenticacion.
+
     const onSubmit = async (data) => {
         
         try {
@@ -15,6 +18,7 @@ const Login = () => {
             if (response.status === 200) {
                 navigate('/');
                 console.log('Usuario atenticado', response);
+                login(response.data.token); //utiliza login de contexto y decodifica el token
             }
         } catch (error) {
             console.log('Ocurrio un error', error);
