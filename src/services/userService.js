@@ -8,4 +8,6 @@ const registerUserService =  (data) => axios.post (`${URL}/register`, data) //ht
 //login
 const loginUserService =  (data) => axios.post (`${URL}/login`, data)  // https://json-sever-jwt.onrender.com/login {json}
 
-export default  {registerUserService, loginUserService};
+const getMeUserService = (jwtToken) => axios.post ('${URL}/users/me', {header: {Authorization: `Bearer ${jwtToken}`}})
+
+export default  {registerUserService, loginUserService, getMeUserService};
