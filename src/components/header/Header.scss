@@ -1,4 +1,5 @@
 $menu-color: #255;
+$hover-color: #ff6600;
 
 @mixin header-link {
     color: $menu-color;
@@ -19,7 +20,9 @@ $menu-color: #255;
     &__logo {
         @include header-link();
     }
-
+    &__list-item{
+        list-style: none;
+    }
     &__nav-list{
         display: flex;
         list-style: none;
@@ -29,14 +32,32 @@ $menu-color: #255;
 
     &__item-link{
         @include header-link();
+        padding: 5px 10px; // Añadir padding para mayor espacio clickable
+        position: relative; // Necesario para el pseudo-elemento
+        
+        &::after {
+            content: '';
+            display: block;
+            height: 3px;
+            width: 0;
+            background: $hover-color;
+            transition: width 0.3s ease;
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+        }
 
         &:hover {
             @include header-border();
-        }
-    }
-        &--is-active{
-            @include header-border($size:3px);
+            
         }
     
+
+        &--is-active{
+            @include header-border($size:3px);
+            font-weight: bold;
+            
+        }
+    }
 
 }
