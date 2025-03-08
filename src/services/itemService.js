@@ -4,11 +4,11 @@ import { data } from 'react-router-dom';
 
 const URL = 'https://json-sever-jwt.onrender.com';
 
-const getAllItemsService = () => axios.get (`${URL}/items`, data);
+const getAllItemService = () => axios.get (`${URL}/items`, data);
 
 const getOneItemService = (id) => axios.get (`${URL}/items/${id}`,data);
 
 const createItemService = (data, token) => axios.post (`${URL}/items`, data, {headers: {Authorzation:`Bearer ${token}`}});
 
 
-export default  {getAllItemsService, getOneItemService, createItemService};
+export   {getAllItemService, getOneItemService, createItemService};
