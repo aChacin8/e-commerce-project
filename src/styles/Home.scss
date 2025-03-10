@@ -75,7 +75,7 @@ $card-shadow: rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s ease;
 
             &:hover {
-                background-color: darken($primary-color, 10%);
+                background-color: $primary-color;
             }
         }
     }
