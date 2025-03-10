@@ -1,40 +1,53 @@
 $menu-color: #255;
 $hover-color: #ff6600;
+$background-color: #f8f9fa;
 
 @mixin header-link {
     color: $menu-color;
     text-decoration: none;
     letter-spacing: 2px;
+    transition: color 0.3s ease;
 }
 
-@mixin header-border ($size:2px){
-    border-bottom: solid $size $menu-color;
+@mixin header-border($size: 2px) {
+    border-bottom: solid $size $hover-color;
 }
 
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
+    padding: 15px 30px;
+    background-color: $background-color;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     &__logo {
         @include header-link();
+        font-size: 1.5rem;
+        font-weight: bold;
     }
-    &__list-item{
+
+    &__list-div {
+        display: flex;
+        margin-left: 7rem;
+    }
+
+    &__list-item {
         list-style: none;
     }
-    &__nav-list{
+
+    &__nav-list {
         display: flex;
         list-style: none;
         column-gap: 20px;
         flex-wrap: wrap;
     }
 
-    &__item-link{
+    &__item-link {
         @include header-link();
-        padding: 5px 10px; // Añadir padding para mayor espacio clickable
-        position: relative; // Necesario para el pseudo-elemento
-        
+        padding: 5px 10px;
+        position: relative;
+
         &::after {
             content: '';
             display: block;
@@ -48,16 +61,28 @@ $hover-color: #ff6600;
         }
 
         &:hover {
-            @include header-border();
-            
-        }
-    
+            color: $hover-color;
 
-        &--is-active{
-            @include header-border($size:3px);
+            &::after {
+                width: 100%;
+            }
+        }
+
+        &--is-active {
+            @include header-border($size: 3px);
             font-weight: bold;
-            
         }
     }
 
+    &__search {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+            border-color: $hover-color;
+            outline: none;
+        }
+    }
 }

@@ -1,0 +1,82 @@
+$primary-color: #ff6600;
+$secondary-color: #255;
+$background-color: #f8f9fa;
+$text-color: #333;
+$card-shadow: rgba(0, 0, 0, 0.1);
+
+.home {
+    padding: 20px;
+    background-color: $background-color;
+
+    &__title {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 2.5rem;
+        color: $secondary-color;
+    }
+
+    &__products {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    &__card {
+        width: 18rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px $card-shadow;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px $card-shadow;
+        }
+
+        &-img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        &-body {
+            padding: 15px;
+            background-color: #fff;
+        }
+
+        &-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: $text-color;
+        }
+
+        &-text {
+            font-size: 1rem;
+            color: $text-color;
+            margin-bottom: 10px;
+        }
+
+        &-price {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: $primary-color;
+            margin-bottom: 15px;
+        }
+
+        &-button {
+            width: 100%;
+            padding: 10px;
+            background-color: $primary-color;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: darken($primary-color, 10%);
+            }
+        }
+    }
+}
