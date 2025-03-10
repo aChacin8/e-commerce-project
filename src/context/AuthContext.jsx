@@ -1,12 +1,13 @@
 import { createContext, useState, useEffect } from "react";
 import {jwtDecode} from 'jwt-decode';
+import { set } from "react-hook-form";
 
 const AuthContext = createContext();
 
 const AuthProvider = ({children}) => {
     const [isAuth, setIsAuth] = useState(false);  //Estoy autenticado
     const [userPayload, setUserPayload] = useState(null); //JWT payload decodificando
-    
+
     const login = (token) => {
         localStorage.setItem ('token', token);
         const decode = jwtDecode(token);
@@ -33,7 +34,7 @@ const AuthProvider = ({children}) => {
         isAuth,
         userPayload,
         login,
-        logout
+        logout,
     };
     
     return(
@@ -45,3 +46,4 @@ const AuthProvider = ({children}) => {
     );
 }
 export {AuthContext, AuthProvider};
+

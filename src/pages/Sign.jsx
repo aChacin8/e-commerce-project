@@ -1,9 +1,8 @@
 import { Card, Button, Form } from 'react-bootstrap';
-import userService from '@/services/userService';
+import { registerUserService } from '@/services/userService';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
-const { registerUserService } = userService;
 
 const Sign = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -30,10 +29,11 @@ const Sign = () => {
                         <Form.Label>First Name:</Form.Label>
                         <Form.Control
                             type='text'
-                            name='firstName'
+                            id='first_name'
+                            name='first_name'
                             placeholder='First name'
                             required
-                            {...register('firstName')}
+                            {...register('first_name')}
                         />
                         <p>{errors.firstName?.message}</p>
                     </Form.Group>
@@ -42,10 +42,11 @@ const Sign = () => {
                         <Form.Label>Last Name:</Form.Label>
                         <Form.Control
                             type='text'
-                            name='lastName'
+                            id='last_name'
+                            name='last_name'
                             placeholder='Last name'
                             required
-                            {...register('lastName')}
+                            {...register('last_name')}
                         />
                         <p>{errors.lastName?.message}</p>
                     </Form.Group>
