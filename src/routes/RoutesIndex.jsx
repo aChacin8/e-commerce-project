@@ -3,12 +3,12 @@ import {Home, Dashboard, Secret, Login, Sign} from '@/pages';
 import { useAuthContext } from '@/hooks/useAuthContext';
 
 
-const RoutesIndex = () => {
+const RoutesIndex = ({searchItem}) => {
     const {isAuth} = useAuthContext();
 
     return ( 
         <Routes>
-            <Route path='/' element= {<Home/>}/>
+            <Route path='/' element= {<Home searchItem={searchItem}/>}/>
             <Route path='/Dashboard' 
             element= {
             isAuth

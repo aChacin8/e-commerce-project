@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import  {getAllItemService} from '@/services/itemService';
-import { Card } from "react-bootstrap";
-
-const Home = () => {
+import { Button, Card } from "react-bootstrap";
+import '@/styles/Home.scss';
+const Home = ({searchItem}) => {
     const [itemsList, setItemsList] = useState([]);
 
     useEffect(() => {
@@ -13,7 +13,6 @@ const Home = () => {
                 if (response.status === 200) {
                     setItemsList(response.data);
                 }
-
             } catch (error) {
                 console.log('Ocurrio un error', error);
             }
@@ -21,22 +20,26 @@ const Home = () => {
         fecthItemsData();
     },[]);
 
-    
+    const filteredItems = itemsList.filter(item=> {
+        return item.product_name.toLowerCase().includes(searchItem.toLowerCase());
+    });
+
     return (
         <>
-            <h1>Home</h1>
-            <div className='d-flex justify-content-center flex-wrap'>
-                {itemsList.map((item) => (
-                    <Card key={item.id} style={{ width: '18rem' }} className='m-2'>
-                        <Card.Img variant="top" src={item.image} />
-                        <Card.Body>
-                            <Card.Title>{item.name}</Card.Title>
-                            <Card.Text>
+            <h1 className="home__title">Home</h1>
+            <div className='home__products'>
+                {filteredItems.map((item) => (
+                    <Card key={item.id} className='home__card'>
+                        <Card.Img variant="top" src={item.image} className="home__card-img" />
+                        <Card.Body className="home__card-body">
+                            <Card.Title className="home__card-title">{item.product_name}</Card.Title>
+                            <Card.Text className="home__card-text">
                                 {item.description}
                             </Card.Text>
-                            <Card.Text>
+                            <Card.Text className="home__card-price">
                                 Price: {item.price}$
                             </Card.Text>
+                            <Button variant="success" className="home__card-button">Add to Cart</Button>
                         </Card.Body>
                     </Card>
                 ))}
