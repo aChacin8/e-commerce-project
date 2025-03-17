@@ -10,6 +10,8 @@ const Header = ({setSearchItem}) => {
     const handleSearchChange = (e) => {
         setSearchItem (e.target.value);
     }
+
+
     return (
         <>
                 <nav className='header'>
@@ -18,32 +20,33 @@ const Header = ({setSearchItem}) => {
                         <li className='header__list-item'>
                             <NavLink className= {({isActive})=> linkIsActive(isActive)} to='/'>Home</NavLink>
                         </li>
+                        <li className='header__list-item'>
+                            <NavLink className={({ isActive }) => linkIsActive(isActive)} to='/Cart'>Shop</NavLink>                                
+                        </li>
 
                         {isAuth 
                         ?(
                             <>
-                            <li className='header__list-item'>
-                            <NavLink className= {({isActive})=> linkIsActive(isActive)} to='/Dashboard'>Dashboard</NavLink>
-                            </li>
-                            <li className='header__list-item'>
-                                <NavLink className={({ isActive }) => linkIsActive(isActive)} to='/Secret'>Secret</NavLink>
-                            </li>
-                            <li className='header__list-item'>
-                                <NavLink className='header__item-link' onClick={logout}>Logout</NavLink>
-                            </li>
+                                <li className='header__list-item'>
+                                <NavLink className= {({isActive})=> linkIsActive(isActive)} to='/Dashboard'>Dashboard</NavLink>
+                                </li>
+                                <li className='header__list-item'>
+                                    <NavLink className={({ isActive }) => linkIsActive(isActive)} to='/Secret'>Secret</NavLink>
+                                </li>
+                                <li className='header__list-item'>
+                                    <NavLink className='header__item-link' onClick={logout}>Logout</NavLink>
+                                </li>
                             </>
                         )
                         :(
-                            <>
-                                <div className='header__list-div'>
-                                    <li className='header__list-item px-4'>
-                                        <NavLink className={({ isActive }) => linkIsActive(isActive)} to='/Login'>Login</NavLink>
-                                    </li>
-                                    <li className='header__list-item'>
-                                        <NavLink className={({ isActive }) => linkIsActive(isActive)} to='/Sign'>Sign up</NavLink>
-                                    </li>
-                                </div>
-                            </>
+                            <div className='header__list-div'>
+                                <li className='header__list-item px-4'>
+                                    <NavLink className={({ isActive }) => linkIsActive(isActive)} to='/Login'>Login</NavLink>
+                                </li>
+                                <li className='header__list-item'>
+                                    <NavLink className={({ isActive }) => linkIsActive(isActive)} to='/Sign'>Sign up</NavLink>
+                                </li>
+                            </div>
                         )}
                         
                         <form>
