@@ -9,7 +9,6 @@ const CartComponent = () => {
 
         <>
             <div className='shop__products' >
-    
                 {cart.length === 0 ? (
                     <p>Tu carrito está vacío</p>
                 ) : (
@@ -45,9 +44,7 @@ const CartComponent = () => {
                                 </Button>
                             </Card.Body>
                         </Card>
-    
                     ))
-    
                 )}
             </div>
         </>
