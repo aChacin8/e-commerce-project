@@ -3,8 +3,10 @@ $secondary-color: #255;
 $background-color: #f8f9fa;
 $text-color: #333;
 $card-shadow: rgba(0, 0, 0, 0.1);
+$text-button: rgb(255, 255, 255);
 
 .shop {
+    display: flex;
     
     &__products {
         margin: 2rem;
@@ -34,7 +36,7 @@ $card-shadow: rgba(0, 0, 0, 0.1);
 
         &-body {
             padding: 15px;
-            background-color: #fff;
+            background-color: $text-button;
         }
 
         &-title {
@@ -60,7 +62,7 @@ $card-shadow: rgba(0, 0, 0, 0.1);
             width: 100%;
             padding: 10px;
             background-color: $primary-color;
-            color: #fff;
+            color: $text-button;
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -71,4 +73,34 @@ $card-shadow: rgba(0, 0, 0, 0.1);
             }
         }
     }
+}
+
+$padding: 10px; 
+$width: 10rem; 
+$border: 6px;
+$buy_color: rgb(19, 66, 12);
+$clear_color: rgb(94, 28, 28);
+
+
+
+@mixin d_button ($padding, $width, $border, $text-button ) {
+    padding: $padding;
+    width: $width;
+    border-radius: $border;
+    color: $text-button;
+    margin: 6px;
+}
+
+.button {
+    
+    &__buy{
+        @include d_button($padding, $width, $border, $text-button);
+        background-color: $buy_color;
+    }
+
+    &__clear {
+        @include d_button($padding, $width, $border, $text-button);
+        background-color: $clear_color;
+    }
+    
 }
